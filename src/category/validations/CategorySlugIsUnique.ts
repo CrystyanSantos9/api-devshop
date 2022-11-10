@@ -15,12 +15,13 @@ export class CategorySlugIsUnique implements ValidatorConstraintInterface {
   ): Promise<boolean> {
     const category = await this.categoryService.findBySlug(text)
     if (category) {
+      console.log(category)
       return false
     }
     return true
   }
 
-  // podemos remover argss
+  // podemos remover argss ss
   defaultMessage(args: ValidationArguments): string {
     return 'Slug must be unique'
   }

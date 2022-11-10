@@ -12,7 +12,7 @@ yarn-error.log*
 lerna-debug.log*
 
 database/postgres
-
+build
 
 # OS
 .DS_Store
