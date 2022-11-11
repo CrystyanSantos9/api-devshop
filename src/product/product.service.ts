@@ -43,4 +43,8 @@ export class ProductService {
       return false
     }
   }
+
+  async findBySlug(slug: string): Promise<Product> {
+    return this.productRepository.findOne({ where: [{ slug }] })
+  }
 }

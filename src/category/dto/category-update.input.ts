@@ -1,5 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql'
-import { IsUUID, Length } from 'class-validator'
+import { IsUUID, Length, Matches, Validate } from 'class-validator'
+import { CategorySlugIsUnique } from '../validations/CategorySlugIsUnique'
 
 @InputType('CategoryInputUpdate')
 export class CategoryUpdateInput {
@@ -7,11 +8,13 @@ export class CategoryUpdateInput {
   @IsUUID()
   id: string
 
-  @Length(5)
+  @Length(3)
   @Field()
   name: string
 
-  @Length(5)
   @Field()
+  @Length(3)
+  @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
+  @Validate(CategorySlugIsUnique)
   slug: string
 }
